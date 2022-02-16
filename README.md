@@ -1,4 +1,4 @@
-# Renrdle
+# Wardle
 A recreation of the game Wordle in Java. 
 Everything in this repository is original code written by Warren Lazarraga.
 This project is based to imitate the game Wordle.
