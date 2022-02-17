@@ -1,4 +1,4 @@
-
+import java.util.*;
 public class CheckWord {
 
 	boolean isInWord;
@@ -10,17 +10,16 @@ public class CheckWord {
 		isInWord = false;
 		myWord = new char[5];
 		WordofDay = new char[5];
-		key = new char[5];	
-	}
-	
-	public char[] Check$(String myWord, String WordofDay) {
+		key = new char[5];
 
+	}
+	public char[] Check$(String myWord, String WordofDay) {
 		for(int i = 0; i < myWord.length(); i++) {
 			this.myWord[i] = myWord.charAt(i);
 			this.WordofDay[i] = WordofDay.charAt(i);
 		}
 		for(int i = 0; i < this.myWord.length; i++) {
-			
+
 			if(this.myWord[i] == this.WordofDay[i]) {
 				key[i] = '$';
 			}
@@ -30,15 +29,30 @@ public class CheckWord {
 		}
 		for(int i = 0; i < this.myWord.length; i++) {
 			for(int j = 0; j < this.myWord.length; j++) {
-				if(this.WordofDay[i] == this.myWord[j] && i != j && this.WordofDay[i] != this.WordofDay[j]) {
+				if(this.WordofDay[i] == this.myWord[j] && i != j 
+						&& this.WordofDay[i] != this.WordofDay[j]) {
 					key[j] = '#';
 					break;
 				}
 				else if (i==j && this.WordofDay[i] == this.myWord[j] ) {
 					break;
 				}
+
 			}
-		}	
+		}
 		return key;
+	}
+	public ArrayList<Character> getAlphabet(ArrayList<Character> Alpha){
+
+		for(int i = 0; i < this.myWord.length; i++) {
+			for(int j = 0; j < Alpha.size(); j++) {
+				char a = Alpha.get(j);
+				if(this.myWord[i] ==  a) {
+					Alpha.remove(j);
+					j--;
+				}
+			}
+		}
+		return Alpha;
 	}
 }
