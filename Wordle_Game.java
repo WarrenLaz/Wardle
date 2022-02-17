@@ -8,8 +8,13 @@ public class Wordle_Game {
 		
 		do {
 		ranWord ranW = new ranWord();
+		ArrayList<Character> Alphabet = new ArrayList<>();
 		
-		System.out.println("WELCOME TO WORDLE");
+		for(int i = 97; i <= 122; i++) {
+			Alphabet.add((char)i);
+		}
+		
+		System.out.println("WELCOME TO WARDLE");
 		System.out.println("X = letter not in word");
 		System.out.println("# = letter is in word but in the wrong place");
 		System.out.println("$ = letter is in word and is in the right place");
@@ -19,8 +24,10 @@ public class Wordle_Game {
 		int ranVal = ranW.getRanVal();
 		String WordofDay = ranW.getRanWord(ranVal);
 		
-		//String WordofDay = " "; //use to set a specific word
-		
+		//String WordofDay = "pizza"; //use to set a specific word
+		System.out.println();
+		System.out.println("LETTERS NOT USED: ");
+		System.out.println(Alphabet);
 		//iterates 6 times.
 		for(int i = 0; i < 6; i++) {
 			ranWord check = new ranWord();
@@ -30,7 +37,6 @@ public class Wordle_Game {
 			String myWord = input.next();
 			//
 				if(check.checkWord(myWord) == true) {
-					
 					char[] wCheck = charCheck.Check$(myWord, WordofDay);
 					System.out.print("Word check:            ");
 					for(int j = 0; j < wCheck.length; j++ ) {
@@ -44,6 +50,7 @@ public class Wordle_Game {
 						System.out.println("\nCORRECT!!");
 						break;
 					}	
+					System.out.println(charCheck.getAlphabet(Alphabet));
 					
 				}
 				else {
@@ -53,16 +60,12 @@ public class Wordle_Game {
 					i--;
 				}
 		}
-		
 		System.out.println();
 		System.out.println("The word was: " + WordofDay);
 		System.out.println();
 		System.out.print("\nWould you like to play again? ");
 		answer = input.next();
 		System.out.println();
-		} while(answer.equalsIgnoreCase("yes"));
-		
-		
+		} while(answer.equalsIgnoreCase("yes"));	
 	}
 }
-
